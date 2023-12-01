@@ -33,41 +33,12 @@ function saveJokeToFile(joke) {
   });
 }
 
-// Function to display leaderboard if requested
-function displayLeaderboard() {
-  fs.readFile("jokes.txt", "utf8", (err, data) => {
-    if (err) {
-      console.error("Error reading jokes.txt:", err);
-      return;
-    }
-
-    const jokesArray = data.split("\n\n").filter((joke) => joke.trim() !== "");
-    if (jokesArray.length === 0) {
-      console.log("No jokes in the leaderboard yet!");
-    } else {
-      const mostPopularJoke = jokesArray.reduce(
-        (acc, joke) => {
-          const count = (joke.match(/\b/g) || []).length; 
-          return count > acc.count ? { joke, count } : acc;
-        },
-        { joke: "", count: 0 }
-      );
-
-      console.log(
-        `The most popular joke is:\n${mostPopularJoke.joke}\nWith a popularity score of: ${mostPopularJoke.count}`
-      );
-    }
-  });
-}
-
 // Command line arguments
 const command = process.argv[2];
 const searchTerm = process.argv[3];
 
-// Main logic
-if (command === "leaderboard") {
-  displayLeaderboard();
-} else if (command === "searchTerm") {
+
+ if (command === "searchTerm") {
   if (!searchTerm) {
     console.error("Please provide a search term for jokes.");
   } else {
@@ -86,5 +57,5 @@ if (command === "leaderboard") {
     });
   }
 } else {
-  console.error('Invalid command. Please use "searchTerm" or "leaderboard".');
+  console.error('Invalid command. Please use "searchTerm" ');
 }
