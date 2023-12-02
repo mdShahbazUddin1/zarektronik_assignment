@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/mdShahbazUddin1/zarektronik_assignment#readme",
   "dependencies": {
+    "node-fetch": "^2.6.1",
     "request": "^2.88.2"
   }
 }
